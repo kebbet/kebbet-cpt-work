@@ -3,7 +3,7 @@
  * Plugin Name: Kebbet plugins - Custom Post Type: Work
  * Plugin URI: https://github.com/kebbet/kebbet-cpt-work
  * Description: Registers a Custom Post Type.
- * Version: 20210517.01
+ * Version: 20210519.01
  * Author: Erik Betshammar
  * Author URI: https://verkan.se
  *
