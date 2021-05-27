@@ -67,9 +67,9 @@ function load_textdomain() {
 function register() {
 
 	$labels_args = array(
-		'name'                     => _x( 'Work', 'Post Type General Name', 'kebbet-cpt-work' ),
+		'name'                     => _x( 'Works', 'Post Type General Name', 'kebbet-cpt-work' ),
 		'singular_name'            => _x( 'Work', 'Post Type Singular Name', 'kebbet-cpt-work' ),
-		'menu_name'                => __( 'Work', 'kebbet-cpt-work' ),
+		'menu_name'                => __( 'Works', 'kebbet-cpt-work' ),
 		'name_admin_bar'           => __( 'Work-post', 'kebbet-cpt-work' ),
 		'parent_item_colon'        => __( 'Parent post:', 'kebbet-cpt-work' ),
 		'all_items'                => __( 'All posts', 'kebbet-cpt-work' ),
