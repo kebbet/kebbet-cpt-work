@@ -3,7 +3,7 @@
  * Plugin Name: Kebbet plugins - Custom Post Type: Work
  * Plugin URI: https://github.com/kebbet/kebbet-cpt-work
  * Description: Registers a Custom Post Type.
- * Version: 20210519.01
+ * Version: 20210527.01
  * Author: Erik Betshammar
  * Author URI: https://verkan.se
  *
@@ -12,10 +12,11 @@
 
 namespace kebbet\cpt\work;
 
-const POSTTYPE = 'work';
-const SLUG     = 'works';
-const ICON     = 'hammer';
-const MENUPOS  = 9;
+const POSTTYPE  = 'work';
+const SLUG      = 'works';
+const ICON      = 'hammer';
+const MENUPOS   = 9;
+const THUMBNAIL = true;
 
 /**
  * Link to ICONS
@@ -29,6 +30,9 @@ const MENUPOS  = 9;
 function init() {
 	load_textdomain();
 	register();
+	if ( true === THUMBNAIL ) {
+		add_theme_support( 'post-thumbnails' );
+	}
 }
 add_action( 'init', __NAMESPACE__ . '\init', 0 );
 
@@ -62,7 +66,7 @@ function load_textdomain() {
  */
 function register() {
 
-	$labels_args       = array(
+	$labels_args = array(
 		'name'                     => _x( 'Work', 'Post Type General Name', 'kebbet-cpt-work' ),
 		'singular_name'            => _x( 'Work', 'Post Type Singular Name', 'kebbet-cpt-work' ),
 		'menu_name'                => __( 'Work', 'kebbet-cpt-work' ),
@@ -96,13 +100,18 @@ function register() {
 		'item_scheduled'           => __( 'Post scheduled', 'kebbet-cpt-work' ),
 		'item_updated'             => __( 'Post updated', 'kebbet-cpt-work' ),
 	);
-	$supports_args     = array(
+
+	$supports_args = array(
 		'author',
 		'title',
 		'editor',
-		'thumbnail',
 		'page-attributes',
 	);
+
+	if ( true === THUMBNAIL ) {
+		$supports_args = array_merge( $supports_args, array( 'thumbnail' ) );
+	}
+
 	$rewrite_args      = array(
 		'slug'       => SLUG,
 		'with_front' => false,
