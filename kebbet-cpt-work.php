@@ -99,6 +99,10 @@ function register() {
 		'item_reverted_to_draft'   => __( 'Post reverted to Draft', 'kebbet-cpt-work' ),
 		'item_scheduled'           => __( 'Post scheduled', 'kebbet-cpt-work' ),
 		'item_updated'             => __( 'Post updated', 'kebbet-cpt-work' ),
+		// 5.7 + 5.8
+		'filter_by_date'           => __( 'Filter posts by date', 'kebbet-cpt-work' ),
+		'item_link'                => __( 'Work post link', 'kebbet-cpt-work' ),
+		'item_link_description'    => __( 'A link to a work post', 'kebbet-cpt-work' ),
 	);
 
 	$supports_args = array(
