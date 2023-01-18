@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Kebbet plugins - Custom Post Type: Work
  * Plugin URI: https://github.com/kebbet/kebbet-cpt-work
@@ -14,6 +15,7 @@ namespace kebbet\cpt\work;
 
 const POSTTYPE  = 'work';
 const SLUG      = 'works';
+const IS_PUBLIC = false;
 const ICON      = 'admin-customizer';
 const MENUPOS   = 9;
 const THUMBNAIL = true;
@@ -83,10 +85,10 @@ function register() {
 		'search_items'             => __( 'Search posts', 'kebbet-cpt-work' ),
 		'not_found'                => __( 'Not found', 'kebbet-cpt-work' ),
 		'not_found_in_trash'       => __( 'No posts found in Trash', 'kebbet-cpt-work' ),
-		'featured_image'           => __( 'Featured image', 'kebbet-cpt-work' ),
-		'set_featured_image'       => __( 'Set featured image', 'kebbet-cpt-work' ),
-		'remove_featured_image'    => __( 'Remove featured image', 'kebbet-cpt-work' ),
-		'use_featured_image'       => __( 'Use as featured image', 'kebbet-cpt-work' ),
+		'featured_image'           => __( 'Artwork image', 'kebbet-cpt-work' ),
+		'set_featured_image'       => __( 'Set artwork image', 'kebbet-cpt-work' ),
+		'remove_featured_image'    => __( 'Remove artwork image', 'kebbet-cpt-work' ),
+		'use_featured_image'       => __( 'Use as artwork image', 'kebbet-cpt-work' ),
 		'insert_into_item'         => __( 'Insert into item', 'kebbet-cpt-work' ),
 		'uploaded_to_this_item'    => __( 'Uploaded to this post', 'kebbet-cpt-work' ),
 		'items_list'               => __( 'Items list', 'kebbet-cpt-work' ),
@@ -128,7 +130,7 @@ function register() {
 		'supports'            => $supports_args,
 		'taxonomies'          => array(),
 		'hierarchical'        => false,
-		'public'              => true,
+		'public'              => IS_PUBLIC,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'menu_position'       => MENUPOS,
@@ -136,9 +138,9 @@ function register() {
 		'show_in_admin_bar'   => true,
 		'show_in_nav_menus'   => true,
 		'can_export'          => true,
-		'has_archive'         => SLUG,
+		'has_archive'         => IS_PUBLIC,
 		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
+		'publicly_queryable'  => IS_PUBLIC,
 		'rewrite'             => $rewrite_args,
 		'capabilities'        => $capabilities_args,
 		// Adding map_meta_cap will map the meta correctly.
