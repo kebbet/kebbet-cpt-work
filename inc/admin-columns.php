@@ -49,7 +49,6 @@ add_filter( 'manage_' . POSTTYPE . '_posts_columns', __NAMESPACE__ . '\set_admin
  * @param int    $post_id The post ID for the row.
  */
 function populate_custom_columns( $column, $post_id ) {
-	
 	if ( 'modified' === $column ) {
 		$format   = get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
 		$modified = get_the_modified_date( $format );
