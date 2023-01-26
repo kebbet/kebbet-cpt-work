@@ -1,13 +1,18 @@
 <?php
-
 /**
- * Plugin Name: Kebbet plugins - Custom Post Type: Work
- * Plugin URI: https://github.com/kebbet/kebbet-cpt-work
- * Description: Registers a Custom Post Type.
- * Version: 20210527.01
- * Author: Erik Betshammar
- * Author URI: https://verkan.se
+ * Plugin Name:       Kebbet plugins - Custom Post Type: Work
+ * Plugin URI:        https://github.com/kebbet/kebbet-cpt-work
+ * Description:       Registers a Custom Post Type.
+ * Author:            Erik Betshammar
+ * Version:           1.2.0
+ * Network:           true
+ * Author URI:        https://verkan.se
+ * Requires at least: 6.1
+ * Requires PHP:      7.4
+ * Update URI:        false
+ * Text domain:       kebbet-cpt-work
  *
+ * @author Erik Betshammar
  * @package kebbet-cpt-work
  */
 
@@ -17,7 +22,7 @@ const POSTTYPE  = 'work';
 const SLUG      = 'works';
 const IS_PUBLIC = false;
 const ICON      = 'admin-customizer';
-const MENUPOS   = 9;
+const MENU_POS  = 9;
 const THUMBNAIL = true;
 
 /**
@@ -35,6 +40,7 @@ function init() {
 	if ( true === THUMBNAIL ) {
 		add_theme_support( 'post-thumbnails' );
 	}
+	add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\enqueue_scripts' );
 }
 add_action( 'init', __NAMESPACE__ . '\init', 0 );
 
@@ -133,7 +139,7 @@ function register() {
 		'public'              => IS_PUBLIC,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
-		'menu_position'       => MENUPOS,
+		'menu_position'       => MENU_POS,
 		'menu_icon'           => 'dashicons-' . ICON,
 		'show_in_admin_bar'   => true,
 		'show_in_nav_menus'   => true,
@@ -150,6 +156,22 @@ function register() {
 	register_post_type( POSTTYPE, $post_type_args );
 }
 
+/**
+ * Enqueue plugin scripts and styles.
+ *
+ * @since 1.2.0
+ *
+ * @param string $page The page/file name.
+ * @return void
+ */
+function enqueue_scripts( $page ) {
+	$assets_pages = array(
+		'index.php',
+	);
+	if ( in_array( $page, $assets_pages, true ) || 'edit-' . POSTTYPE === get_current_screen()->id ) {
+		wp_enqueue_style( POSTTYPE . '_scripts', plugin_dir_url( __FILE__ ) . 'assets/style.css', array(), '1.2.0' );
+	}
+}
 /**
  * Add the content to the `At a glance`-widget.
  */

@@ -1,0 +1,28 @@
+#dashboard_right_now li.work-count span::before,
+#dashboard_right_now li.work-count a::before {
+	content: "\f540";
+}
+
+body.post-type-work .wp-list-table .column-thumbnail {
+	width: 150px;
+}
+@media screen and (max-width: 782px) { body.post-type-work .wp-list-table .column-thumbnail { 
+	display: none;
+}}
+body.post-type-work .wp-list-table .column-thumbnail img {
+	max-width: 150px;
+	width: 100%;
+	height: auto;
+}
+@media screen and (max-width: 782px) { body.post-type-work .wp-list-table .column-thumbnail img { 
+	max-width: none;
+}}
+/* Hide the ugly column label. */
+body.post-type-work .wp-list-table tr:not(.inline-edit-row):not(.no-items) .column-thumbnail:not(.column-primary)::before {
+	display: none;
+}
+
+body.post-type-work .fixed .manage-column.column-date,
+body.post-type-work .fixed .manage-column.column-modified {
+	width: 15%
+}

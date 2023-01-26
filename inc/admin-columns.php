@@ -38,6 +38,7 @@ add_filter( 'manage_' . POSTTYPE . '_posts_columns', __NAMESPACE__ . '\column_or
 function set_admin_column_list( $columns ) {
 	$columns['modified']  = __( 'Last modified', 'kebbet-cpt-work' );
 	$columns['thumbnail'] = __( 'Featured image', 'kebbet-cpt-work' );
+	unset($columns['date']);
 	return $columns;
 }
 add_filter( 'manage_' . POSTTYPE . '_posts_columns', __NAMESPACE__ . '\set_admin_column_list' );
@@ -60,9 +61,7 @@ function populate_custom_columns( $column, $post_id ) {
 		$thumbnail = get_the_post_thumbnail(
 			$post_id,
 			'thumbnail',
-			array(
-				'style' => 'max-width: 80px; height: auto;',
-			)
+			array()
 		);
 		if ( $thumbnail ) {
 			echo $thumbnail;
