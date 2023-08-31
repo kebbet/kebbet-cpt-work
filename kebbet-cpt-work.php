@@ -19,8 +19,8 @@
 namespace kebbet\cpt\work;
 
 const POSTTYPE  = 'work';
-const SLUG      = 'works';
-const IS_PUBLIC = false;
+const SLUG      = 'item';
+const IS_PUBLIC = true;
 const ICON      = 'admin-customizer';
 const MENU_POS  = 9;
 const THUMBNAIL = true;
@@ -116,6 +116,7 @@ function register() {
 	$supports_args = array(
 		'title',
 		'page-attributes',
+		'editor',
 	);
 
 	if ( true === THUMBNAIL ) {
